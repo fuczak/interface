@@ -1,12 +1,13 @@
 var path = require('path')
 var webpack = require('webpack')
+var version = require('./package.json').version
 
 module.exports = {
   entry: './src/main.js',
   output: {
-    path: path.resolve(__dirname, './dist'),
+    path: path.resolve(__dirname, './dist', version),
     publicPath: '/dist/',
-    filename: 'build.js'
+    filename: 'interface.js'
   },
   module: {
     rules: [
