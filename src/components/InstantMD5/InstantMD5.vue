@@ -14,7 +14,7 @@
 import hasher from '../../modules/hasher'
 
 export default {
-    props: ['placeholder'],
+    props: ['placeholder', 'onInputChange'],
     data: function() {
         return {
             hash: ''
@@ -23,6 +23,10 @@ export default {
     methods: {
         calculateHash(ev) {
             this.hash = hasher(ev.target.value)
+
+            if (window.Interface && typeof window.Interface[this.onInputChange] === 'function') {
+                window.Interface[this.onInputChange](ev.target.value)
+            }
         }
     }
 }
